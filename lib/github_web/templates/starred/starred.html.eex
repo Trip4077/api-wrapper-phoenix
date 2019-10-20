@@ -1,12 +1,19 @@
 <section>
     <%= for datum <- @data do %>
-        <a href="<%= datum["html_url"] %>" target="_blank">
-        <div>
-            <h1><%= datum["name"] %></h1>
-            <h2>By <%= datum["owner"]["login"] %></h2>
-            
-            <p><%= datum["description"] %></p>
+        <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        <%= datum["name"] %>
+                    </h1>
+
+                    <h2 class="card-subtitle mb-2 text-muted">
+                        By <%= datum["owner"]["login"] %>
+                    </h2>
+                    
+                    <p class="card-text"><%= datum["description"] %></p>
+
+                    <a href="<%= datum["html_url"] %>" target="_blank" class="btn-dark btn-lg">Visit Repo</a>
+                </div>
         </div>
-        </a>
     <% end %>
 </section>
