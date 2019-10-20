@@ -27,7 +27,10 @@ defmodule GithubWeb.Router do
   scope "/api", GithubWeb do
     pipe_through :api
 
+    # Endpoint for user information
     resources "/data", DatumController, only: [:index, :show]
+
+    # Endpoint for starred repo information
     resources "/starred", StarredController, only: [:index, :show]
   end
 end
