@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :github, Github.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "Robin123",
   database: "github_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
