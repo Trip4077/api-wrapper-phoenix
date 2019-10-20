@@ -21,6 +21,10 @@ defmodule Github.User do
     Github.fetch_user_info(handle)
   end
 
+  def list_starred(handle) do
+    Github.fetch_starred_repos(handle)
+  end
+
   @doc """
   Gets a single datum.
 

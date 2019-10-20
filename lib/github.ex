@@ -8,8 +8,7 @@ defmodule Github do
   """
 
   @expected_fields ~w(
-    "login" "id" "node_id" "avatar_url" "gravatar_id" "url" "html_url" "followers_url" "following_url" "gists_url" "starred_url" "subscriptions_url" "organizations_url" "repos_url" "events_url" "received_events_url" "type" "site_admin"
-    "name" "company" "blog" "location" "email" "hireable" "bio" "public_repos" "public_gists" "followers" "following" "created_at" "updated_at"
+    "name" "full_name" "owner" "html_url" "url" "description" 
   )
 
 
@@ -22,6 +21,7 @@ defmodule Github do
   end
 
   def decode_body(res) do
+    IO.inspect res
     Poison.decode! res.body
   end
 
@@ -34,6 +34,17 @@ defmodule Github do
   def fetch_user_info do
     Github.process_url
     |> HTTPoison.get!
+    |> Github.decode_body
+  end
+
+  def fetch_starred_repos(handle) do
+    response = HTTPoison.get! "https://api.github.com/users/#{handle}/starred?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
+
+    Poison.decode! response.body
+  end  
+  
+  def fetch_starred_repos do
+    HTTPoison.get! "https://api.github.com/users/Trip4077/starred?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
     |> Github.decode_body
   end
 end

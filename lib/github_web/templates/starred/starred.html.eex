@@ -1,0 +1,12 @@
+<section>
+    <%= for datum <- @data do %>
+        <a href="<%= datum["html_url"] %>">
+        <div>
+            <h1><%= datum["name"] %></h1>
+            <h2>By <%= datum["owner"]["login"] %></h2>
+            
+            <p><%= datum["description"] %></p>
+        </div>
+        </a>
+    <% end %>
+</section>

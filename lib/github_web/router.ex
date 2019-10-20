@@ -28,5 +28,6 @@ defmodule GithubWeb.Router do
     pipe_through :api
 
     resources "/data", DatumController, only: [:index, :show]
+    resources "/starred", StarredController, only: [:index, :show]
   end
 end
