@@ -11,9 +11,17 @@ defmodule GithubWeb.DatumView do
   end
 
   def render("datum.json", %{datum: datum}) do
-    %{id: datum.id,
-      name: datum.name,
-      username: datum.username,
-      repo: datum.repo}
+    %{
+      avatar_url: datum["avatar_url"],
+      bio: datum["bio"],
+      email: datum["email"],
+      company: datum["company"],
+      blog: datum["blog"],
+      followers: datum["followers"],
+      following: datum["following"],
+      login: datum["login"],
+      name: datum["name"],
+      starred_url: datum["starred_url"]
+     }
   end
 end

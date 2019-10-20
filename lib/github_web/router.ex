@@ -20,7 +20,9 @@ defmodule GithubWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", GithubWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", GithubWeb do
+    pipe_through :api
+
+    resources "/data", DatumController, only: [:index, :show]
+  end
 end

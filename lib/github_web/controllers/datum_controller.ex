@@ -7,12 +7,13 @@ defmodule GithubWeb.DatumController do
   action_fallback GithubWeb.FallbackController
 
   def index(conn, _params) do
-    data = User.list_data()
+    data = User.list_data("trip4077")
     render(conn, "index.json", data: data)
   end
 
   def show(conn, %{"id" => id}) do
-    datum = User.get_datum!(id)
+    datum = User.list_data(id)
+    |> IO.inspect
     render(conn, "show.json", datum: datum)
   end
 

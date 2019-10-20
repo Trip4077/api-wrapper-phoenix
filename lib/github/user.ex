@@ -17,8 +17,8 @@ defmodule Github.User do
       [%Datum{}, ...]
 
   """
-  def list_data do
-    Repo.all(Datum)
+  def list_data(handle)do
+    Github.fetch_user_info(handle)
   end
 
   @doc """
