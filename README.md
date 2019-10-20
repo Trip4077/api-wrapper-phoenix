@@ -9,12 +9,30 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
+  * Click the start here button to navigate to user view
+  * Click See Favorites button to navigate to starred repo view
+  * Click Visit Repo to navigate to the github url
+
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
+## Back End API Wrapper*
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+### Getting User Information
+
+The endpoint for retrieving user information is 
+
+`localhost4000/api/data/#{username}`
+
+Where the username matches the username associated with the github account you wish to pull user data from
+
+### Getting Starred Repo Information
+
+The endpoint for retrieving user information is 
+
+`localhost4000/api/starred/#{username}`
+
+Where the username matches the username associated with the github account you wish to pull repo data from
+
+
+
+\* In absence of search form, endpoints can be manually changed to get any username that matches a github account against the github API
