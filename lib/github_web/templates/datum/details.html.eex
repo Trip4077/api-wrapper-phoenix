@@ -1,0 +1,16 @@
+<section>
+    <div>
+        <h1><%= @datum["name"] %></h1>
+        <p><%= @datum["following"] %></p>
+        <p><%= @datum["followers"] %></p>
+    </div>
+
+    <p><%= @datum["bio"] %></p>
+
+    <div>
+        <p><%= @datum["login"] %></p>
+        <p><%= @datum["email"] %></p>
+        <p><%= @datum["company"] %></p>
+    </div>
+</section>
+

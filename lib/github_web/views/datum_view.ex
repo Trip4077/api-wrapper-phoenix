@@ -3,14 +3,14 @@ defmodule GithubWeb.DatumView do
   alias GithubWeb.DatumView
 
   def render("index.json", %{data: data}) do
-    %{data: render_many(data, DatumView, "datum.json")}
+    %{data: render_many(data, DatumView, "details.html")}
   end
 
   def render("show.json", %{datum: datum}) do
-    %{data: render_one(datum, DatumView, "datum.json")}
+    %{data: render_one(datum, DatumView, "details.html")}
   end
 
-  def render("datum.json", %{datum: datum}) do
+  def render("details.html", datum: datum) do
     %{
       avatar_url: datum["avatar_url"],
       bio: datum["bio"],

@@ -11,6 +11,10 @@ defmodule GithubWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :put_secure_browser_headers
   end
 
   scope "/", GithubWeb do

@@ -14,7 +14,6 @@ defmodule Github do
 
 
   def process_url(handle) do
-    IO.puts handle
     "https://api.github.com/users/#{handle}?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
   end
 

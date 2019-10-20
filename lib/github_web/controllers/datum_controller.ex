@@ -13,23 +13,7 @@ defmodule GithubWeb.DatumController do
 
   def show(conn, %{"id" => id}) do
     datum = User.list_data(id)
-    |> IO.inspect
-    render(conn, "show.json", datum: datum)
-  end
 
-  def update(conn, %{"id" => id, "datum" => datum_params}) do
-    datum = User.get_datum!(id)
-
-    with {:ok, %Datum{} = datum} <- User.update_datum(datum, datum_params) do
-      render(conn, "show.json", datum: datum)
-    end
-  end
-
-  def delete(conn, %{"id" => id}) do
-    datum = User.get_datum!(id)
-
-    with {:ok, %Datum{}} <- User.delete_datum(datum) do
-      send_resp(conn, :no_content, "")
-    end
+    render(conn, "details.html", datum: datum)
   end
 end
