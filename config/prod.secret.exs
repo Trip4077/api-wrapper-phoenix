@@ -36,3 +36,7 @@ config :github, GithubWeb.Endpoint,
 #
 # Then you can assemble a release by calling `mix release`.
 # See `mix help release` for more information.
+
+config :app, api_id: "baa07460a2faf7efd879",
+
+config :app, api_client: "6310922f03a518b3f2b33d64e1bf571700fd0fd8"

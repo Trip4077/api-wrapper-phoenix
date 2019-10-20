@@ -11,13 +11,20 @@ defmodule Github do
     "name" "full_name" "owner" "html_url" "url" "description" 
   )
 
+  def generate_id do
+    Application.get_env(:app, :api_id)
+  end
+
+  def genereate_client do
+    Application.get_env(:app, :api_client)
+  end
 
   def process_url(handle) do
-    "https://api.github.com/users/#{handle}?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
+    "https://api.github.com/users/#{handle}?client_id=#{Github.generate_id}&client_secret=#{Github.genereate_client}"
   end
 
   def process_url do
-    "https://api.github.com/users?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
+    "https://api.github.com/users?client_id=#{Github.generate_id}&client_secret=#{Github.genereate_client}"
   end
 
   def decode_body(res) do
@@ -38,13 +45,15 @@ defmodule Github do
   end
 
   def fetch_starred_repos(handle) do
-    response = HTTPoison.get! "https://api.github.com/users/#{handle}/starred?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
+    api_id = Application.get_env(:app, :api_id)
+    api_client = Application.get_env(:app, :api_client)
+    response = HTTPoison.get! "https://api.github.com/users/#{handle}/starred?client_id=#{Github.generate_id}&client_secret=#{Github.genereate_client}"
 
     Poison.decode! response.body
   end  
   
   def fetch_starred_repos do
-    HTTPoison.get! "https://api.github.com/users/Trip4077/starred?client_id=baa07460a2faf7efd879&client_secret=6310922f03a518b3f2b33d64e1bf571700fd0fd8"
+    HTTPoison.get! "https://api.github.com/users/Trip4077/starred?client_id=#{Github.generate_id}&client_secret=#{Github.genereate_client}"
     |> Github.decode_body
   end
 end
